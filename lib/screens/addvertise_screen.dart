@@ -15,7 +15,9 @@ import 'package:divar/widgets/newAdvertise/category_items.dart';
 import 'package:flutter/material.dart';
 
 class AddvertiseScreen extends StatefulWidget {
-  const AddvertiseScreen({super.key});
+   AddvertiseScreen({super.key,required this.image,required this.title});
+   String image;
+   String title;
 
   @override
   State<AddvertiseScreen> createState() => _AddvertiseScreenState();
@@ -46,14 +48,17 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                 slivers: [
                   // product Image ===============
                   SliverToBoxAdapter(
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 180,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        image: const DecorationImage(
-                            image: AssetImage('assets/images/ad-image/1.png'),
-                            fit: BoxFit.cover),
+                    child: Hero(
+                      tag: widget.image,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 180,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          image:  DecorationImage(
+                              image: AssetImage(widget.image),
+                              fit: BoxFit.cover),
+                        ),
                       ),
                     ),
                   ),
@@ -97,7 +102,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                     child: Row(
                       children: [
                         Text(
-                          'آپارتمان 500 متری در صیاد شیرازی',
+                          widget.title,
                           style: AvisTextStyle.setStyle(
                               textColor: Colors.black, fontSize: 17),
                         ),

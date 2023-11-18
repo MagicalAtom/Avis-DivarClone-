@@ -6,13 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Screen3 extends StatefulWidget {
-  const Screen3({super.key});
-
+  Screen3({super.key,required this.controller});
+  PageController controller;
   @override
   State<Screen3> createState() => _Screen3State();
 }
 
 class _Screen3State extends State<Screen3> {
+
   List<String> items = [
     'فروش آپارتمان',
     'فروش آپارتمان2',
@@ -175,12 +176,19 @@ class _Screen3State extends State<Screen3> {
                     },
                   ),
                   const SizedBox(height: 20,),
-                  Button(
-                    height: 54,
-                    background: AvisColors.Red(400),
-                    text: Text(
-                      'بعدی',
-                      style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                  GestureDetector(
+                    onTap: () {
+                      widget.controller.animateToPage(3,
+                      duration: Duration(milliseconds: 400),
+                      curve: Curves.linear);
+                    },
+                    child: Button(
+                      height: 54,
+                      background: AvisColors.Red(400),
+                      text: Text(
+                        'بعدی',
+                        style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                      ),
                     ),
                   ),
                 ],

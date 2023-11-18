@@ -1,7 +1,9 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:divar/components/bigProduct.dart';
 import 'package:divar/components/littleProduct.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
+import 'package:divar/data/product.dart';
 import 'package:divar/screens/addvertise_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +31,7 @@ class HomeScreen extends StatelessWidget {
           textDirection: TextDirection.rtl,
           child: CustomScrollView(
             slivers: [
+              // hot avis ====================================
               SliverToBoxAdapter(
                 child: breakSection(text: 'آویز های داغ'),
               ),
@@ -41,21 +44,23 @@ class HomeScreen extends StatelessWidget {
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: productsHomePage.length,
                     itemBuilder: (context,index){
                       return Container(
                         margin: index == 0 ? const EdgeInsets.only() : const EdgeInsets.only(right: 16) ,
                         child:  GestureDetector(
                           onTap: () {
                             Navigator.push(context,MaterialPageRoute(builder: (context){
-                              return const AddvertiseScreen();
+                              return  AddvertiseScreen(title: productsHomePage[index].title,image: productsHomePage[index].image,);
                             }));
                           },
-                          child: BigProduct( //  
-                            title: 'ویلای 500 متری زیر قیمت',
-                            description: 'ویو عالی، سند تک برگ، سال ساخت ۱۴۰۲، تحویل فوری',
-                            image: 'assets/images/ad-image/5.png',
-                            price: '300,000,000,000',
+                          child: FadeInDown(
+                            child: BigProduct( //  
+                              title: productsHomePage[index].title,
+                              description: productsHomePage[index].description,
+                              image: productsHomePage[index].image,
+                              price: productsHomePage[index].price,
+                            ),
                           ),
                         )
                         );
@@ -78,15 +83,24 @@ class HomeScreen extends StatelessWidget {
                   child: ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
-                    itemCount: 10,
+                    itemCount: productsHomePage.length,
                     itemBuilder: (context,index){
                       return Container(
                         margin: const EdgeInsets.only(top: 16) ,
-                        child:  LittleProduct (
-                          title: 'ویلای 500 متری زیر قیمت',
-                          description: 'ویو عالی، سند تک برگ، سال ساخت ۱۴۰۲، تحویل فوری',
-                          image: 'assets/images/ad-image/5.png',
-                          price: '300,000,000,000',
+                        child:  GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context){
+                              return  AddvertiseScreen(title: productsHomePage[index].title,image: productsHomePage[index].image,);
+                            }));
+                          },
+                          child: FadeInLeft(
+                            child: LittleProduct (
+                               title: productsHomePage[index].title,
+                                description: productsHomePage[index].description,
+                                image: productsHomePage[index].image,
+                                price: productsHomePage[index].price,
+                            ),
+                          ),
                         )
                         );
                     },

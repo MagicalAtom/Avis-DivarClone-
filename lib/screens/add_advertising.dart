@@ -36,7 +36,7 @@ class _NewAdvertisingState extends State<NewAdvertising> {
               children: [
                  Screen1(controller:pageController),
                  Screen2(controller:pageController),
-                const Screen3(),
+                 Screen3(controller: pageController,),
                 Screen4(),
                 const Screen5(),
               ],

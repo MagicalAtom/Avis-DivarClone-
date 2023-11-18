@@ -50,11 +50,14 @@ class BigProduct extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
               borderRadius: BorderRadius.circular(6),
-              child: Image.asset(
-                image,
-                height: 140,
-                width: 230,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: image,
+                child: Image.asset(
+                  image,
+                  height: 140,
+                  width: 230,
+                  fit: BoxFit.cover,
+                ),
               )),
           const SizedBox(
             height: 16,
