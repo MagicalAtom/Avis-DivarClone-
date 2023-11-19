@@ -55,10 +55,15 @@ class LittleProduct extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: AvisTextStyle.setStyle(
-                          textColor: Colors.black, fontSize: 16),
+                    SizedBox(
+                      width: 180,
+                      child: Text(
+                        title,
+                        maxLines: 1,
+                        overflow: TextOverflow.fade,
+                        style: AvisTextStyle.setStyle(
+                            textColor: Colors.black, fontSize: 16),
+                      ),
                     ),
                   ],
                 ),
@@ -93,7 +98,7 @@ class LittleProduct extends StatelessWidget {
                           textColor: Colors.black,
                         ),
                       ),
-                      const SizedBox(width: 50,),
+                      const SizedBox(width: 100,),
                       Container(
                         height: 40,
                         decoration: BoxDecoration(

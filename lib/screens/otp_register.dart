@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:divar/screens/main_screen.dart';
@@ -22,6 +24,8 @@ class _OtpRegisterScreenState extends State<OtpRegisterScreen> {
   TextEditingController textEditingController2 = TextEditingController();
   TextEditingController textEditingController3 = TextEditingController();
   TextEditingController textEditingController4 = TextEditingController();
+  int totalTime = 60;
+  Timer? timer;
 
   @override
   void initState() {
@@ -38,6 +42,7 @@ class _OtpRegisterScreenState extends State<OtpRegisterScreen> {
     textField4.addListener(() {
       setState(() {});
     });
+    startTimer();
   }
 
   @override
@@ -52,7 +57,17 @@ class _OtpRegisterScreenState extends State<OtpRegisterScreen> {
     textEditingController3.dispose();
     textEditingController4.dispose();
   }
-
+void startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      setState(() {
+        if (totalTime < 1) {
+          timer!.cancel();
+        } else {
+          totalTime -= 1;
+        }
+      });
+    });
+  } 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,6 +136,19 @@ class _OtpRegisterScreenState extends State<OtpRegisterScreen> {
                             isOtpUsing: true,
                             textEditingController: textEditingController4,
                             focusNode: textField4)),
+                  ],
+                ),
+                    const SizedBox(height: 35,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('00:$totalTime',style: AvisTextStyle.setStyle(textColor: Colors.black,fontSize: 16),),
+                    const SizedBox(width: 4,),
+
+                    totalTime == 00 ? GestureDetector(onTap: (){setState(() {
+                      totalTime = 60;
+                      startTimer();
+                    });},child: Text('ارسال مجدد',style: AvisTextStyle.setStyle(textColor: AvisColors.Grey(500),fontSize: 18),)) : const Text(''), 
                   ],
                 ),
                 const Spacer(),

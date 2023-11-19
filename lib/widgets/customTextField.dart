@@ -34,6 +34,7 @@ class AvisTextField extends StatelessWidget {
         textDirection:
             focusNode.hasFocus ? TextDirection.ltr : TextDirection.rtl,
         child: TextField(
+          keyboardType: isOtpUsing ? TextInputType.number : TextInputType.text,
           onChanged: isOtpUsing ? (value){
             if(value.isNotEmpty){
               FocusScope.of(context).nextFocus();

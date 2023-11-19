@@ -10,6 +10,6 @@ class DescriptionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: 330,child: Text('ویلا ۵۰۰ متری در خیابان صیاد شیرازی ویو عالی وسط جنگل قیمت فوق العاده  گذاشتم فروش فوری  خریدار باشی تخفیف پای معامله میدم.',style: AvisTextStyle.h6(textColor: AvisColors.Grey(400)),));
+    return Container(margin: const EdgeInsets.only(bottom:90),width: 330,child: Text('ویلا ۵۰۰ متری در خیابان صیاد شیرازی ویو عالی وسط جنگل قیمت فوق العاده  گذاشتم فروش فوری  خریدار باشی تخفیف پای معامله میدم.',style: AvisTextStyle.h6(textColor: AvisColors.Grey(400)),));
   }
 }

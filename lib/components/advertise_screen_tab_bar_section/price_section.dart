@@ -9,6 +9,7 @@ class PriceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 100),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(

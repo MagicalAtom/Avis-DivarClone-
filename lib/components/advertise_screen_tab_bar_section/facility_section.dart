@@ -121,7 +121,7 @@ class FacilitySection extends StatelessWidget {
 
   Widget SingleItems({required String text}) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
