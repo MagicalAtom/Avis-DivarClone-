@@ -98,7 +98,7 @@ class LittleProduct extends StatelessWidget {
                           textColor: Colors.black,
                         ),
                       ),
-                      const SizedBox(width: 100,),
+                      const SizedBox(width: 50,),
                       Container(
                         height: 40,
                         decoration: BoxDecoration(
