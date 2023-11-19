@@ -63,7 +63,7 @@ class _OtpLoginScreenState extends State<OtpLoginScreen> {
 
 
 void startTimer() {
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       setState(() {
         if (totalTime < 1) {
           timer!.cancel();
@@ -153,7 +153,7 @@ void startTimer() {
                     totalTime == 00 ? GestureDetector(onTap: (){setState(() {
                       totalTime = 60;
                       startTimer();
-                    });},child: Text('ارسال مجدد',style: AvisTextStyle.setStyle(textColor: AvisColors.Grey(500),fontSize: 18),)) : Text(''), 
+                    });},child: Text('ارسال مجدد',style: AvisTextStyle.setStyle(textColor: AvisColors.Grey(500),fontSize: 18),)) : const Text(''), 
                   ],
                 ),
                 const Spacer(),

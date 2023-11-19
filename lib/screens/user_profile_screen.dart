@@ -154,7 +154,7 @@ class UserProfileScreen extends StatelessWidget {
                         style: AvisTextStyle.setStyle(
                             textColor: const Color(0xff101828), fontSize: 14),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 12,
                       ),
                       Container(

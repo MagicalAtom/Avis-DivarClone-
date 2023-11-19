@@ -31,14 +31,15 @@ class _NewAdvertisingState extends State<NewAdvertising> {
               height: MediaQuery.of(context).size.height,
             ),
             PageView(
+              physics: const NeverScrollableScrollPhysics(), // چون تا وقتی که چیزی انجام نشده نتونه بره صفحه بعد
               controller: pageController,
               onPageChanged: (index) => pageIndicator(index),
               children: [
                  Screen1(controller:pageController),
                  Screen2(controller:pageController),
                  Screen3(controller: pageController,),
-                Screen4(),
-                const Screen5(),
+                Screen4(controller:pageController),
+                Screen5(controller:pageController),
               ],
             ),
             Align(

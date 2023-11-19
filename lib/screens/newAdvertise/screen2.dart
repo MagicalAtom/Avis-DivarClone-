@@ -16,7 +16,7 @@ class Screen2 extends StatelessWidget {
             GestureDetector(
                 onTap: () {
                   controller.animateToPage(2,
-                      duration: Duration(milliseconds: 400),
+                      duration: const Duration(milliseconds: 400),
                       curve: Curves.linear);
                 },
                 child: CategoryItem(
@@ -26,7 +26,7 @@ class Screen2 extends StatelessWidget {
             GestureDetector(
                 onTap: () {
                   controller.animateToPage(2,
-                      duration: Duration(milliseconds: 400),
+                      duration: const Duration(milliseconds: 400),
                       curve: Curves.linear);
                 },
                 child: CategoryItem(
@@ -36,7 +36,7 @@ class Screen2 extends StatelessWidget {
             GestureDetector(
                 onTap: () {
                   controller.animateToPage(2,
-                      duration: Duration(milliseconds: 400),
+                      duration: const Duration(milliseconds: 400),
                       curve: Curves.linear);
                 },
                 child: CategoryItem(

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:divar/components/advertise_page_appBar.dart';
 import 'package:divar/components/advertise_screen_tab_bar_section/description_section.dart';
 import 'package:divar/components/advertise_screen_tab_bar_section/facility_section.dart';
@@ -35,7 +33,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: _floatingActionButtons(),
+        floatingActionButton: const _floatingActionButtons(),
         backgroundColor: AvisColors.greyBase,
         appBar: const AppBarAdvertisePage(),
         body: Directionality(
@@ -62,7 +60,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                       ),
                     ),
                   ),
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: SizedBox(height: 32),
                   ),
 
@@ -93,7 +91,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                       ],
                     ),
                   ),
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: SizedBox(height: 28),
                   ),
 
@@ -110,7 +108,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                     ),
                   ),
 
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: SizedBox(height: 28),
                   ),
 
@@ -121,7 +119,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                     iconColor: AvisColors.Grey(300),
                   )),
 
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: SizedBox(height: 28),
                   ),
 
@@ -145,7 +143,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                       },
                     ),
                   ),
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: SizedBox(height: 24),
                   ),
                   SliverToBoxAdapter(

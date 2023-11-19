@@ -5,7 +5,9 @@ import 'package:divar/widgets/newAdvertise/feature_items.dart';
 import 'package:flutter/material.dart';
 
 class Screen4 extends StatefulWidget {
-  Screen4({super.key});
+  Screen4({super.key, required this.controller});
+  PageController controller;
+  // موارد صفحه های قبل هم اینجا میشه دریافت کرد
 
   @override
   State<Screen4> createState() => _Screen4State();
@@ -103,12 +105,19 @@ class _Screen4State extends State<Screen4> {
                   },
                 ),
                 const Spacer(),
-                Button(
-                  height: 54,
-                  background: AvisColors.Red(400),
-                  text: Text(
-                    'بعدی',
-                    style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                GestureDetector(
+                  onTap: () {
+                    widget.controller.animateToPage(4,
+                        duration: const Duration(milliseconds: 400),
+                        curve: Curves.linear);
+                  },
+                  child: Button(
+                    height: 54,
+                    background: AvisColors.Red(400),
+                    text: Text(
+                      'بعدی',
+                      style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                    ),
                   ),
                 ),
               ],

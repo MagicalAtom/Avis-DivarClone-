@@ -179,7 +179,7 @@ class _Screen3State extends State<Screen3> {
                   GestureDetector(
                     onTap: () {
                       widget.controller.animateToPage(3,
-                      duration: Duration(milliseconds: 400),
+                      duration: const Duration(milliseconds: 400),
                       curve: Curves.linear);
                     },
                     child: Button(
@@ -235,7 +235,7 @@ class _Screen3State extends State<Screen3> {
                             width: 80,
                             child: TextField(
                               controller: controller,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
                                 enabledBorder: InputBorder.none,
@@ -250,7 +250,7 @@ class _Screen3State extends State<Screen3> {
                                 });
                               },
                               child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Image.asset(
                                     'assets/images/icons/up.png',
                                     width: 10,
@@ -304,7 +304,7 @@ class _Screen3State extends State<Screen3> {
                             width: 80,
                             child: TextField(
                               controller: controllerOne,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
                                 enabledBorder: InputBorder.none,
@@ -319,7 +319,7 @@ class _Screen3State extends State<Screen3> {
                                 });
                               },
                               child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Image.asset(
                                     'assets/images/icons/up.png',
                                     width: 10,

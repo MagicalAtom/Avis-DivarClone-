@@ -1,4 +1,3 @@
-
 import 'package:divar/config/colors.dart';
 import 'package:flutter/material.dart';
 

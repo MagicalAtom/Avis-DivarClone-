@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/widgets/newAdvertise/category_items.dart';
 import 'package:flutter/material.dart';

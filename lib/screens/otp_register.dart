@@ -1,6 +1,5 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
-import 'package:divar/screens/home_screen.dart';
 import 'package:divar/screens/main_screen.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/customTextField.dart';

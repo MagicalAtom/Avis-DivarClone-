@@ -48,7 +48,7 @@ class AvisTextField extends StatelessWidget {
           textDirection:
               focusNode.hasFocus ? TextDirection.ltr : TextDirection.rtl,
           decoration: InputDecoration(
-            counter: Offstage(),
+            counter: const Offstage(),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6)
             ),

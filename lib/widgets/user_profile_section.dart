@@ -28,7 +28,7 @@ class UserProfileItems extends StatelessWidget {
               Row(
                 children: [
                   Image.asset('assets/images/icons/$icon'),
-                  SizedBox(width: 12,),
+                 const  SizedBox(width: 12,),
                   Text(text,style: AvisTextStyle.h6(textColor: const Color(0xff101828)),),
                 ],
               ),

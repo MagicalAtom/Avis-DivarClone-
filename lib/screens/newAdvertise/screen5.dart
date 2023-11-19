@@ -5,9 +5,11 @@ import 'package:divar/widgets/customTextField.dart';
 import 'package:divar/widgets/newAdvertise/feature_items.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 class Screen5 extends StatefulWidget {
-  const Screen5({super.key});
+  Screen5({super.key, required this.controller});
+  PageController controller;
 
   @override
   State<Screen5> createState() => _Screen5State();
@@ -56,7 +58,7 @@ class _Screen5State extends State<Screen5> {
                   strokeWidth: 1,
                   dashPattern: const [9, 12],
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     width: MediaQuery.of(context).size.width,
                     height: 160,
                     child: Center(
@@ -185,16 +187,36 @@ class _Screen5State extends State<Screen5> {
                     });
                   },
                 ),
-                const SizedBox(height: 40,),
-                Button(
-                  height: 54,
-                  background: AvisColors.Red(400),
-                  text: Text(
-                    'ثبت آگهی',
-                    style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                const SizedBox(
+                  height: 40,
+                ),
+                GestureDetector(
+                  onTap: () {
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.confirm,
+                        confirmBtnText: 'ثبت آگهی',
+                        cancelBtnText: 'لغو',
+                        confirmBtnColor: AvisColors.Red(400),
+                        text: 'آیا از ثبت آگهی اطمینان دارید ؟',
+                        title: 'آویز',
+                        backgroundColor: AvisColors.Purple(400),
+                        textTextStyle: AvisTextStyle.h6(textColor: Colors.black),
+                        titleTextStyle: AvisTextStyle.h5(textColor: AvisColors.Red(400)),
+                        confirmBtnTextStyle: AvisTextStyle.setStyle(textColor: AvisColors.greyBase, fontSize: 15),
+                        cancelBtnTextStyle: AvisTextStyle.setStyle(textColor: AvisColors.Grey(400), fontSize: 15),
+                      );
+                    
+                  },
+                  child: Button(
+                    height: 54,
+                    background: AvisColors.Red(400),
+                    text: Text(
+                      'ثبت آگهی',
+                      style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                    ),
                   ),
                 ),
-                
               ],
             ),
           ),
