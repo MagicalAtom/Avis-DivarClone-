@@ -13,7 +13,7 @@ class PriceSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          border: Border.all(width: .8, color: AvisColors.Grey(200))),
+          border: Border.all(width: .8, color: AvisColors.Grey(200)),borderRadius: BorderRadius.circular(6)),
       height: 110,
       child: Center(
         child: Column(

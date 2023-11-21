@@ -18,7 +18,8 @@ class PropertySection extends StatelessWidget {
             border: Border.all(
               width: .8,
               color: AvisColors.Grey(200)
-            )
+            ),
+            borderRadius: BorderRadius.circular(6)
           ),
           height: 110,
           child: Row(

@@ -1,30 +1,25 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
-import 'package:divar/screens/otp_register.dart';
+import 'package:divar/screens/login/otp_login_screen.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/customTextField.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   FocusNode textField = FocusNode();
-  FocusNode textField2 = FocusNode();
   TextEditingController textEditingController = TextEditingController();
-  TextEditingController textEditingController2 = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     textField.addListener(() {
-      setState(() {});
-    });
-        textField2.addListener(() {
       setState(() {});
     });
   }
@@ -33,15 +28,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void dispose() {
     super.dispose();
     textField.dispose();
-    textField2.dispose();
     textEditingController.dispose();
-    textEditingController2.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, // کیبورد باز شد اسکفولد ریسایز نشه
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -53,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Row(
                   children: [
                     Text(
-                      'خوش اومدی به',
+                      'ورود به ',
                       style: AvisTextStyle.h6(
                         textColor: Colors.black,
                       ),
@@ -69,12 +62,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 24,
                 ),
                 Text(
-                  'این فوق العادست که آویزو برای آگهی هات انتخاب کردی!',
+                  'خوشحالیم که مجددا آویز رو برای آگهی انتخاب کردی!',
                   style: AvisTextStyle.setStyle(
-                      textColor: AvisColors.Grey(500), fontSize: 16),
+                      textColor: AvisColors.Grey(500), fontSize: 17),
                 ),
                 const SizedBox(
                   height: 32,
@@ -83,14 +76,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   isOtpUsing: false,
                   textEditingController: textEditingController,
                   focusNode: textField,
-                  hintText: 'نام و نام خانوادگی',
-                ),
-                const SizedBox(height: 16,),
-                  AvisTextField(
-                  isOtpUsing: false,
-                  textEditingController: textEditingController2,
-                  focusNode: textField2,
                   hintText: 'شماره موبایل',
+                  isLtrField: true,
                 ),
                 const Spacer(),
                 Row(
@@ -100,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return const OtpRegisterScreen();
+                            return const OtpLoginScreen();
                           },
                         ));
                       },
@@ -135,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'قبلا ثبت نام کردی؟',
+                      'تا حالا ثبت نام کردی ؟',
                       style: AvisTextStyle.setStyle(
                           textColor: AvisColors.Grey(500), fontSize: 17),
                     ),
@@ -143,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       width: 4,
                     ),
                     Text(
-                      'ورود',
+                      'ثبت نام',
                       style: AvisTextStyle.setStyle(
                           textColor: AvisColors.Red(400), fontSize: 16),
                     ),

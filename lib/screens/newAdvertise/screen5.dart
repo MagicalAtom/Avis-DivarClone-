@@ -157,8 +157,8 @@ class _Screen5State extends State<Screen5> {
                 ),
                 AvisTextField(
                   isOtpUsing: false,
-                  textEditingController: titleTextEditingController,
-                  focusNode: titleTextFieldFocusNode,
+                  textEditingController: descriptionTextEditingController,
+                  focusNode: descriptionTextFieldFocusNode,
                   hintText: 'توضیحات آویز را وارد کنید...',
                   longField: true,
                 ),

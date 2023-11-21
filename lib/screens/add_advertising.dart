@@ -1,4 +1,4 @@
-import 'package:divar/components/advertise_appBar.dart';
+import 'package:divar/components/new_advertise_page_appBar.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/screens/newAdvertise/screen1.dart';
 import 'package:divar/screens/newAdvertise/screen2.dart';

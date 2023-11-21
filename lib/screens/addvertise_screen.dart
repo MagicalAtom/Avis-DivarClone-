@@ -6,16 +6,16 @@ import 'package:divar/components/advertise_screen_tab_bar_section/property_secti
 import 'package:divar/components/tabar.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
-import 'package:divar/screens/login_screen.dart';
-import 'package:divar/screens/register_screen.dart';
+import 'package:divar/screens/login/login_screen.dart';
+import 'package:divar/screens/register/register_screen.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/newAdvertise/category_items.dart';
 import 'package:flutter/material.dart';
 
 class AddvertiseScreen extends StatefulWidget {
-   AddvertiseScreen({super.key,required this.image,required this.title});
-   String image;
-   String title;
+  AddvertiseScreen({super.key, required this.image, required this.title});
+  String image;
+  String title;
 
   @override
   State<AddvertiseScreen> createState() => _AddvertiseScreenState();
@@ -53,7 +53,7 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                         height: 180,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6),
-                          image:  DecorationImage(
+                          image: DecorationImage(
                               image: AssetImage(widget.image),
                               fit: BoxFit.cover),
                         ),
@@ -161,7 +161,10 @@ class _AddvertiseScreenState extends State<AddvertiseScreen> {
                             child: const FacilitySection()),
                         Visibility(
                             visible: tabSelected == 3,
-                            child: const DescriptionText()),
+                            child: DescriptionText(
+                              description:
+                                  'ویلا ۵۰۰ متری در خیابان صیاد شیرازی ویو عالی وسط جنگل قیمت فوق العاده  گذاشتم فروش فوری  خریدار باشی تخفیف پای معامله میدم.',
+                            )),
                       ],
                     ),
                   ),
@@ -193,12 +196,17 @@ class _floatingActionButtons extends StatelessWidget {
               }));
             },
             child: Button(
-              text:Row(
+              text: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/images/icons/call.png'),
-                  const SizedBox(width: 8,),
-                  Text('اطلاعات تماس',style: AvisTextStyle.h6(textColor: AvisColors.greyBase),),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    'اطلاعات تماس',
+                    style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                  ),
                 ],
               ),
               background: AvisColors.Red(400),
@@ -217,12 +225,17 @@ class _floatingActionButtons extends StatelessWidget {
               }));
             },
             child: Button(
-              text:Row(
+              text: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/images/icons/call.png'),
-                  const SizedBox(width: 8,),
-                  Text('گفتگو',style: AvisTextStyle.h6(textColor: AvisColors.greyBase),),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    'گفتگو',
+                    style: AvisTextStyle.h6(textColor: AvisColors.greyBase),
+                  ),
                 ],
               ),
               background: AvisColors.Red(400),

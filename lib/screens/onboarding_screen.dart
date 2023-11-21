@@ -1,7 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
-import 'package:divar/screens/login_screen.dart';
-import 'package:divar/screens/register_screen.dart';
+import 'package:divar/screens/login/login_screen.dart';
+import 'package:divar/screens/register/register_screen.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -52,10 +53,12 @@ class OnBoarding extends StatelessWidget {
               ),
               Positioned(
                 top: 100,
-                child: Image.asset(
-                  'assets/images/splash/splash-screen.png',
-                  width: 290,
-                  fit: BoxFit.cover,
+                child: FadeInDown(
+                  child: Image.asset(
+                    'assets/images/splash/splash-screen.png',
+                    width: 290,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ],
@@ -70,51 +73,59 @@ class OnBoarding extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'اینجا محل',
-                        style: AvisTextStyle.setStyle(
-                            textColor: Colors.black, fontSize: 22),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Image.asset('assets/images/main/logo.png'),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'آگهی شماست',
-                        style: AvisTextStyle.setStyle(
-                            textColor: Colors.black, fontSize: 22),
-                      ),
-                    ],
+                  FadeInRight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'اینجا محل',
+                          style: AvisTextStyle.setStyle(
+                              textColor: Colors.black, fontSize: 22),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Image.asset('assets/images/main/logo.png'),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'آگهی شماست',
+                          style: AvisTextStyle.setStyle(
+                              textColor: Colors.black, fontSize: 22),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  Text(
-                    'در آویز ملک خود را برای فروش،اجاره و رهن آگهی کنید',
-                    style: AvisTextStyle.setStyle(
-                        textColor: AvisColors.Grey(500), fontSize: 16),
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    'و یا اگر دنبال ملک با مشخصات دلخواه خود هستید',
-                    style: AvisTextStyle.setStyle(
-                        textColor: AvisColors.Grey(500), fontSize: 16),
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    'آویز ها را ببینید',
-                    style: AvisTextStyle.setStyle(
-                        textColor: AvisColors.Grey(500), fontSize: 16),
+                  FadeInRight(
+                    child: Column(
+                      children: [
+                        Text(
+                          'در آویز ملک خود را برای فروش،اجاره و رهن آگهی کنید',
+                          style: AvisTextStyle.setStyle(
+                              textColor: AvisColors.Grey(500), fontSize: 16),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          'و یا اگر دنبال ملک با مشخصات دلخواه خود هستید',
+                          style: AvisTextStyle.setStyle(
+                              textColor: AvisColors.Grey(500), fontSize: 16),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          'آویز ها را ببینید',
+                          style: AvisTextStyle.setStyle(
+                              textColor: AvisColors.Grey(500), fontSize: 16),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
