@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
+import 'package:divar/data/customFileImage.dart';
+import 'package:divar/helper/helper.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/customTextField.dart';
 import 'package:divar/widgets/newAdvertise/feature_items.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Screen5 extends StatefulWidget {
   Screen5({super.key, required this.controller});
@@ -25,7 +30,11 @@ class _Screen5State extends State<Screen5> {
   TextEditingController descriptionTextEditingController =
       TextEditingController();
 
-  bool value = false;
+  bool chat = false;
+  bool call = false;
+
+  /// product selected image
+  XFile? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +70,16 @@ class _Screen5State extends State<Screen5> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     width: MediaQuery.of(context).size.width,
                     height: 160,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: selectedImage != null
+                            ? CustomFileImage(File(selectedImage!.path))
+                                .imageProvider
+                            : const AssetImage(
+                                'assets/images/whitebackground.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,39 +87,48 @@ class _Screen5State extends State<Screen5> {
                           Text(
                             'لطفا تصویر آویز خود را بارگذاری کنید',
                             style: AvisTextStyle.setStyle(
-                                textColor: AvisColors.Grey(400), fontSize: 15),
+                                textColor: selectedImage != null
+                                    ? AvisColors.greyBase
+                                    : AvisColors.Grey(400),
+                                fontSize: 15),
                           ),
                           const SizedBox(
                             height: 16,
                           ),
-                          Container(
-                            width: 185,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: AvisColors.Red(400),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Center(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                        'assets/images/icons/upload.png'),
-                                    const SizedBox(
-                                      width: 12,
-                                    ),
-                                    SizedBox(
-                                        width: 130,
-                                        child: Text(
-                                          'انتخاب تصویر',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: AvisTextStyle.setStyle(
-                                              textColor: AvisColors.greyBase,
-                                              fontSize: 18),
-                                        )),
-                                  ],
+                          GestureDetector(
+                            onTap: () async {
+                              selectedImage = await pickImageFromGallery();
+                              setState(() {});
+                            },
+                            child: Container(
+                              width: 185,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  color: AvisColors.Red(400),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                          'assets/images/icons/upload.png'),
+                                      const SizedBox(
+                                        width: 12,
+                                      ),
+                                      SizedBox(
+                                          width: 130,
+                                          child: Text(
+                                            'انتخاب تصویر',
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: AvisTextStyle.setStyle(
+                                                textColor: AvisColors.greyBase,
+                                                fontSize: 18),
+                                          )),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -168,10 +196,10 @@ class _Screen5State extends State<Screen5> {
                 ),
                 FeatureItem(
                   text: 'فعال کردن گفت و گو',
-                  value: value,
+                  value: chat,
                   onToggle: (p0) {
                     setState(() {
-                      value = value ? false : true;
+                      chat = chat ? false : true;
                     });
                   },
                 ),
@@ -180,10 +208,10 @@ class _Screen5State extends State<Screen5> {
                 ),
                 FeatureItem(
                   text: 'فعال کردن تماس',
-                  value: value,
+                  value: call,
                   onToggle: (p0) {
                     setState(() {
-                      value = value ? false : true;
+                      call = call ? false : true;
                     });
                   },
                 ),
@@ -192,21 +220,23 @@ class _Screen5State extends State<Screen5> {
                 ),
                 GestureDetector(
                   onTap: () {
-                      CoolAlert.show(
-                        context: context,
-                        type: CoolAlertType.confirm,
-                        confirmBtnText: 'ثبت آگهی',
-                        cancelBtnText: 'لغو',
-                        confirmBtnColor: AvisColors.Red(400),
-                        text: 'آیا از ثبت آگهی اطمینان دارید ؟',
-                        title: 'آویز',
-                        backgroundColor: AvisColors.Purple(400),
-                        textTextStyle: AvisTextStyle.h6(textColor: Colors.black),
-                        titleTextStyle: AvisTextStyle.h5(textColor: AvisColors.Red(400)),
-                        confirmBtnTextStyle: AvisTextStyle.setStyle(textColor: AvisColors.greyBase, fontSize: 15),
-                        cancelBtnTextStyle: AvisTextStyle.setStyle(textColor: AvisColors.Grey(400), fontSize: 15),
-                      );
-                    
+                    CoolAlert.show(
+                      context: context,
+                      type: CoolAlertType.confirm,
+                      confirmBtnText: 'ثبت آگهی',
+                      cancelBtnText: 'لغو',
+                      confirmBtnColor: AvisColors.Red(400),
+                      text: 'آیا از ثبت آگهی اطمینان دارید ؟',
+                      title: 'آویز',
+                      backgroundColor: AvisColors.Purple(400),
+                      textTextStyle: AvisTextStyle.h6(textColor: Colors.black),
+                      titleTextStyle:
+                          AvisTextStyle.h5(textColor: AvisColors.Red(400)),
+                      confirmBtnTextStyle: AvisTextStyle.setStyle(
+                          textColor: AvisColors.greyBase, fontSize: 15),
+                      cancelBtnTextStyle: AvisTextStyle.setStyle(
+                          textColor: AvisColors.Grey(400), fontSize: 15),
+                    );
                   },
                   child: Button(
                     height: 54,

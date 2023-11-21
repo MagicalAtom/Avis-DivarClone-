@@ -190,7 +190,7 @@ void startTimer() {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 25,
                 ),
               ],
             ),

@@ -93,6 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   focusNode: textField2,
                   hintText: 'شماره موبایل',
                   isLtrField: true,
+                  isIntKeyboard: true,
                 ),
                 const Spacer(),
                 Row(
@@ -131,25 +132,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 25,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'قبلا ثبت نام کردی؟',
-                      style: AvisTextStyle.setStyle(
-                          textColor: AvisColors.Grey(500), fontSize: 17),
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      'ورود',
-                      style: AvisTextStyle.setStyle(
-                          textColor: AvisColors.Red(400), fontSize: 16),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'قبلا ثبت نام کردی؟',
+                        style: AvisTextStyle.setStyle(
+                            textColor: AvisColors.Grey(500), fontSize: 17),
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        'ورود',
+                        style: AvisTextStyle.setStyle(
+                            textColor: AvisColors.Red(400), fontSize: 16),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

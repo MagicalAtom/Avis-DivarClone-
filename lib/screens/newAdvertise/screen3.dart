@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Screen3 extends StatefulWidget {
-  Screen3({super.key,required this.controller});
+  Screen3({super.key, required this.controller});
   PageController controller;
   @override
   State<Screen3> createState() => _Screen3State();
 }
 
 class _Screen3State extends State<Screen3> {
-
+  // drop down button options , The widget is written at the bottom of the page
   List<String> items = [
     'فروش آپارتمان',
     'فروش آپارتمان2',
@@ -41,7 +41,10 @@ class _Screen3State extends State<Screen3> {
   int made = 1402;
   TextEditingController madeit = TextEditingController();
 
-  bool value = false;
+// switch button State
+  bool elevator = false;
+  bool parking = false;
+  bool Store = false;
 
   @override
   void initState() {
@@ -91,12 +94,18 @@ class _Screen3State extends State<Screen3> {
                   const SizedBox(
                     height: 32,
                   ),
+                  //********* کل محدوده مشخص شده یک ردیف را تعیین *********/
+
                   Sections(
-                      fitstTitle: 'دسته بندی',
-                      controller: options,
-                      fitstTitleOne: 'محدوده ملک',
-                      controllerOne: options,
-                      category: true),
+                      firstTitle: 'دسته بندی',
+                      firstController: options,
+                      secondTitle: 'محدوده ملک',
+                      isStaticField: true,
+                      StaticFieldText: 'خیابان صیاد شیرازی',
+                      secondController: options,
+                      isCategory: true),
+
+                  //******************/
                   const SizedBox(
                     height: 64,
                   ),
@@ -117,18 +126,18 @@ class _Screen3State extends State<Screen3> {
                     height: 32,
                   ),
                   Sections(
-                      fitstTitle: 'متراژ',
-                      controller: meter,
-                      fitstTitleOne: 'تعداد اتاق',
-                      controllerOne: rooms),
+                      firstTitle: 'متراژ',
+                      firstController: meter,
+                      secondTitle: 'تعداد اتاق',
+                      secondController: rooms),
                   const SizedBox(
                     height: 32,
                   ),
                   Sections(
-                      fitstTitle: 'سال ساخت',
-                      controller: madeit,
-                      fitstTitleOne: 'طبقه',
-                      controllerOne: sections),
+                      firstTitle: 'سال ساخت',
+                      firstController: madeit,
+                      secondTitle: 'طبقه',
+                      secondController: sections),
                   const SizedBox(
                     height: 64,
                   ),
@@ -150,37 +159,39 @@ class _Screen3State extends State<Screen3> {
                   ),
                   FeatureItem(
                     text: 'آسانسور',
-                    value: value,
-                    onToggle: (p0) {
+                    value: elevator,
+                    onToggle: (value) {
                       setState(() {
-                        value = value ? false : true;
+                        elevator = elevator ? false : true;
                       });
                     },
                   ),
                   FeatureItem(
                     text: 'پارکینگ',
-                    value: value,
-                    onToggle: (p0) {
+                    value: parking,
+                    onToggle: (value) {
                       setState(() {
-                        value = value ? false : true;
+                        parking = parking ? false : true;
                       });
                     },
                   ),
                   FeatureItem(
                     text: 'انباری',
-                    value: value,
-                    onToggle: (p0) {
+                    value: Store,
+                    onToggle: (value) {
                       setState(() {
-                        value = value ? false : true;
+                        Store = Store ? false : true;
                       });
                     },
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   GestureDetector(
                     onTap: () {
                       widget.controller.animateToPage(3,
-                      duration: const Duration(milliseconds: 400),
-                      curve: Curves.linear);
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.linear);
                     },
                     child: Button(
                       height: 54,
@@ -200,12 +211,31 @@ class _Screen3State extends State<Screen3> {
     );
   }
 
-  Row Sections(
-      {required String fitstTitle,
-      required TextEditingController controller,
-      required String fitstTitleOne,
-      required TextEditingController controllerOne,
-      bool category = false}) {
+/*======================================AboutDialog
+catregory فیلد
+در ویجت پایین اگه 
+true
+باشه میاد و دارپ داون باتن رو نمایش میده
+ویجت
+Sections
+پایین یک ردیف از موارد رو جنریت میکنه
+======================================*/
+
+  Widget Sections({
+    required String firstTitle,
+    required TextEditingController firstController,
+    required String secondTitle,
+    required TextEditingController secondController,
+
+    /// برای مشخص کردن دراپ دان باتن
+    bool isCategory = false,
+
+    /// کاربرد برای باکس ها با مقدار ثابت مثل محدوده ملک
+    bool isStaticField = false,
+
+    /// اگر مقدار بالا رو فعال کنید نیاز هست که متن هم برای اون باکس در نظر بگیرین
+    String StaticFieldText = '',
+  }) {
     return Row(
       children: [
         Expanded(
@@ -213,14 +243,16 @@ class _Screen3State extends State<Screen3> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                fitstTitle,
+                firstTitle,
                 style: AvisTextStyle.setStyle(
                     textColor: AvisColors.Grey(200), fontSize: 18),
               ),
               const SizedBox(
                 height: 16,
               ),
-              category
+
+              // generate Box === if category true , show drop down button
+              isCategory
                   ? DropDown()
                   : Container(
                       padding: const EdgeInsets.all(6),
@@ -231,10 +263,12 @@ class _Screen3State extends State<Screen3> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          // first item section ++++====================
                           SizedBox(
                             width: 80,
                             child: TextField(
-                              controller: controller,
+                              controller: firstController,
+                              keyboardType: TextInputType.number,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -243,19 +277,13 @@ class _Screen3State extends State<Screen3> {
                               ),
                             ),
                           ),
-                          GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  meterint += 10;
-                                });
-                              },
-                              child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Image.asset(
-                                    'assets/images/icons/up.png',
-                                    width: 10,
-                                    fit: BoxFit.cover,
-                                  )))
+                          Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Image.asset(
+                                'assets/images/icons/up.png',
+                                width: 10,
+                                fit: BoxFit.cover,
+                              ))
                         ],
                       ),
                     ),
@@ -265,19 +293,24 @@ class _Screen3State extends State<Screen3> {
         const SizedBox(
           width: 25,
         ),
+        //second item ==================
+
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                fitstTitleOne,
+                secondTitle,
                 style: AvisTextStyle.setStyle(
                     textColor: AvisColors.Grey(200), fontSize: 18),
               ),
+
               const SizedBox(
                 height: 16,
               ),
-              category
+
+              // اینجا چون دومین فیلد بود قرار گرفته
+              isStaticField
                   ? Container(
                       height: 62,
                       decoration: BoxDecoration(
@@ -285,7 +318,7 @@ class _Screen3State extends State<Screen3> {
                           color: AvisColors.Grey(100)),
                       child: Center(
                         child: Text(
-                          'خیابان صیاد شیرازی',
+                          StaticFieldText, // اینجا هم
                           style:
                               AvisTextStyle.h6(textColor: AvisColors.Grey(300)),
                         ),
@@ -303,7 +336,8 @@ class _Screen3State extends State<Screen3> {
                           SizedBox(
                             width: 80,
                             child: TextField(
-                              controller: controllerOne,
+                              controller: secondController,
+                              keyboardType: TextInputType.number,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -312,19 +346,13 @@ class _Screen3State extends State<Screen3> {
                               ),
                             ),
                           ),
-                          GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  meterint += 10;
-                                });
-                              },
-                              child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Image.asset(
-                                    'assets/images/icons/up.png',
-                                    width: 10,
-                                    fit: BoxFit.cover,
-                                  )))
+                          Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Image.asset(
+                                'assets/images/icons/up.png',
+                                width: 10,
+                                fit: BoxFit.cover,
+                              ))
                         ],
                       ),
                     ),
@@ -335,6 +363,7 @@ class _Screen3State extends State<Screen3> {
     );
   }
 
+// drop Down Widget put here ***=============================================
   DropdownMenu<String> DropDown() {
     return DropdownMenu<String>(
       controller: options,

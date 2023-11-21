@@ -16,7 +16,9 @@ class AvisTextField extends StatelessWidget {
       this.otpFocusColor = Colors.white,
       this.longField = false,
       this.isLtrField = false,
-      this.LastTextField = false});
+      this.LastTextField = false,
+      this.isIntKeyboard = false
+      });
 
   FocusNode focusNode;
   TextEditingController? textEditingController;
@@ -45,6 +47,10 @@ class AvisTextField extends StatelessWidget {
    LastTextField
    هم برای این قرار داده شده که اگه به دلخواه در آخرین تکست فیلد او تی پی قرار بگیره مستقیم کاربر رو به صفحه هوم انتقال بده
   */
+
+
+// اگه کیبورد عددی لازمه
+  bool isIntKeyboard;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,15 +64,17 @@ class AvisTextField extends StatelessWidget {
             : TextDirection.rtl,
         child: TextField(
           // ************************ Start TextField
-          keyboardType: isOtpUsing ? TextInputType.number : TextInputType.text,
+          keyboardType: isOtpUsing || isIntKeyboard ? TextInputType.number : TextInputType.text,
           onChanged: isOtpUsing
               ? (value) {
                   if (value.isNotEmpty) {
                     if (LastTextField) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        return const MainApplication();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                          return const MainApplication();
+                        }),
+                      );
                     } else {
                       FocusScope.of(context).nextFocus();
                     }
@@ -80,7 +88,7 @@ class AvisTextField extends StatelessWidget {
                   ? Colors.black
                   : AvisColors.Grey(300)),
           focusNode: focusNode,
-          maxLines: longField ? 3 : 1,
+          maxLines: longField ? 4 : 1,
           maxLength: isOtpUsing ? 1 : 100,
           textDirection: focusNode.hasFocus && isLtrField
               ? TextDirection.ltr

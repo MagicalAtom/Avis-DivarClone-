@@ -1,6 +1,5 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
-import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/user_profile_section.dart';
 import 'package:flutter/material.dart';
 
@@ -108,7 +107,7 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 
-  Container _UserProfileBox() {
+  Widget _UserProfileBox() {
     return Container(
       padding: const EdgeInsets.all(16),
       height: 110,

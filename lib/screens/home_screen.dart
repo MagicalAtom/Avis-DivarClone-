@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: breakSection(text: 'آویز های داغ'),
               ),
-             const  SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(height: 24),
               ),
               SliverToBoxAdapter(
@@ -45,36 +45,44 @@ class HomeScreen extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: productsHomePage.length,
-                    itemBuilder: (context,index){
+                    itemBuilder: (context, index) {
                       return Container(
-                        margin: index == 0 ? const EdgeInsets.only() : const EdgeInsets.only(right: 16) ,
-                        child:  GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,MaterialPageRoute(builder: (context){
-                              return  AddvertiseScreen(title: productsHomePage[index].title,image: productsHomePage[index].image,);
-                            }));
-                          },
-                          child: FadeInDown(
-                            child: BigProduct( //  
-                              title: productsHomePage[index].title,
-                              description: productsHomePage[index].description,
-                              image: productsHomePage[index].image,
-                              price: productsHomePage[index].price,
+                          margin: index == 0
+                              ? const EdgeInsets.only()
+                              : const EdgeInsets.only(right: 16),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return AddvertiseScreen(
+                                  title: productsHomePage[index].title,
+                                  image: productsHomePage[index].image,
+                                );
+                              }));
+                            },
+                            child: FadeInDown(
+                              delay: const Duration(milliseconds: 200),
+                              child: BigProduct(
+                                //
+                                title: productsHomePage[index].title,
+                                description:
+                                    productsHomePage[index].description,
+                                image: productsHomePage[index].image,
+                                price: productsHomePage[index].price,
+                              ),
                             ),
-                          ),
-                        )
-                        );
+                          ));
                     },
-                  ),  
+                  ),
                 ),
               ),
-              const  SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(height: 32),
               ),
-                 SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: breakSection(text: 'آویز های اخیر'),
               ),
-             const  SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: SizedBox(height: 24),
               ),
               SliverToBoxAdapter(
@@ -84,27 +92,32 @@ class HomeScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     itemCount: productsHomePage.length,
-                    itemBuilder: (context,index){
+                    itemBuilder: (context, index) {
                       return Container(
-                        margin: const EdgeInsets.only(top: 16) ,
-                        child:  GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,MaterialPageRoute(builder: (context){
-                              return  AddvertiseScreen(title: productsHomePage[index].title,image: productsHomePage[index].image,);
-                            }));
-                          },
-                          child: FadeInLeft(
-                            child: LittleProduct (
-                               title: productsHomePage[index].title,
-                                description: productsHomePage[index].description,
+                          margin: const EdgeInsets.only(top: 16),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return AddvertiseScreen(
+                                  title: productsHomePage[index].title,
+                                  image: productsHomePage[index].image,
+                                );
+                              }));
+                            },
+                            child: FadeInLeft(
+                              delay: const Duration(milliseconds: 200),
+                              child: LittleProduct(
+                                title: productsHomePage[index].title,
+                                description:
+                                    productsHomePage[index].description,
                                 image: productsHomePage[index].image,
                                 price: productsHomePage[index].price,
+                              ),
                             ),
-                          ),
-                        )
-                        );
+                          ));
                     },
-                  ),  
+                  ),
                 ),
               ),
             ],

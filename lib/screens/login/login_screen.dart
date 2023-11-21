@@ -76,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   isOtpUsing: false,
                   textEditingController: textEditingController,
                   focusNode: textField,
+                  isIntKeyboard: true,
                   hintText: 'شماره موبایل',
                   isLtrField: true,
                 ),
@@ -116,25 +117,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 25,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'تا حالا ثبت نام کردی ؟',
-                      style: AvisTextStyle.setStyle(
-                          textColor: AvisColors.Grey(500), fontSize: 17),
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      'ثبت نام',
-                      style: AvisTextStyle.setStyle(
-                          textColor: AvisColors.Red(400), fontSize: 16),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'تا حالا ثبت نام کردی ؟',
+                        style: AvisTextStyle.setStyle(
+                            textColor: AvisColors.Grey(500), fontSize: 17),
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        'ثبت نام',
+                        style: AvisTextStyle.setStyle(
+                            textColor: AvisColors.Red(400), fontSize: 16),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

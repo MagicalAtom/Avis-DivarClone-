@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 // add_advertising.dart
 
 class AppBarAdvertise extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarAdvertise({super.key});
-
+  AppBarAdvertise({super.key, required this.pagenumber,required this.pageController});
+  int pagenumber;
+  PageController pageController;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,21 +27,32 @@ class AppBarAdvertise extends StatelessWidget implements PreferredSizeWidget {
                   color: Color(0xff101828),
                 )),
             const Spacer(),
-            Image.asset(
-              'assets/images/main/category.png',
-              width: 120,
-              fit: BoxFit.cover,
-            ),
+            pagenumber == 2
+                ? Image.asset(
+                    'assets/images/main/new.png',
+                    width: 70,
+                    fit: BoxFit.cover,
+                  )
+                : Image.asset(
+                    'assets/images/main/category.png',
+                    width: 120,
+                    fit: BoxFit.cover,
+                  ),
             const Spacer(),
-            GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.chevron_right_outlined,
-                  size: 45,
-                  color: Color(0xff101828),
-                )),
+            Visibility(
+              visible: pagenumber > 0,
+              child: GestureDetector(
+                  onTap: () {
+                       pageController.animateToPage(pagenumber - 1,
+                        duration: const Duration(milliseconds: 400),
+                        curve: Curves.linear);
+                  },
+                  child: const Icon(
+                    Icons.chevron_right_outlined,
+                    size: 45,
+                    color: Color(0xff101828),
+                  )),
+            ),
           ],
         ),
       ),

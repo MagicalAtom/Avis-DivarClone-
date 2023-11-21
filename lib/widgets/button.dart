@@ -9,7 +9,6 @@ class Button extends StatelessWidget {
      this.width,
      this.height,
     this.textColor = Colors.white,
-    void Function()? onTap,
   });
   Color background;
   Widget text;
@@ -18,7 +17,6 @@ class Button extends StatelessWidget {
   double? height;
   double? width;
   Color borderColor;
-  void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {

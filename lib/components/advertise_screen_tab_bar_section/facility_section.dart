@@ -31,7 +31,8 @@ class FacilitySection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-              border: Border.all(width: .8, color: AvisColors.Grey(200)),borderRadius: BorderRadius.circular(6)),
+              border: Border.all(width: .8, color: AvisColors.Grey(200)),
+              borderRadius: BorderRadius.circular(6)),
           height: 110,
           child: Center(
             child: Column(
@@ -83,7 +84,8 @@ class FacilitySection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-              border: Border.all(width: .8, color: AvisColors.Grey(200)),borderRadius: BorderRadius.circular(6)),
+              border: Border.all(width: .8, color: AvisColors.Grey(200)),
+              borderRadius: BorderRadius.circular(6)),
           height: 410,
           child: Center(
             child: Column(
@@ -107,7 +109,9 @@ class FacilitySection extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 100,),
+        const SizedBox(
+          height: 100,
+        ),
       ],
     );
   }

@@ -54,6 +54,7 @@ class OnBoarding extends StatelessWidget {
               Positioned(
                 top: 100,
                 child: FadeInDown(
+                  delay: const Duration(milliseconds: 200),
                   child: Image.asset(
                     'assets/images/splash/splash-screen.png',
                     width: 290,
@@ -74,13 +75,14 @@ class OnBoarding extends StatelessWidget {
                     height: 20,
                   ),
                   FadeInRight(
+                    delay: const Duration(milliseconds: 200),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'اینجا محل',
                           style: AvisTextStyle.setStyle(
-                              textColor: Colors.black, fontSize: 22),
+                              textColor: Colors.black, fontSize: 20),
                         ),
                         const SizedBox(
                           width: 5,
@@ -92,7 +94,7 @@ class OnBoarding extends StatelessWidget {
                         Text(
                           'آگهی شماست',
                           style: AvisTextStyle.setStyle(
-                              textColor: Colors.black, fontSize: 22),
+                              textColor: Colors.black, fontSize: 20),
                         ),
                       ],
                     ),
@@ -101,12 +103,13 @@ class OnBoarding extends StatelessWidget {
                     height: 25,
                   ),
                   FadeInRight(
+                    delay: const Duration(milliseconds: 200),
                     child: Column(
                       children: [
                         Text(
                           'در آویز ملک خود را برای فروش،اجاره و رهن آگهی کنید',
                           style: AvisTextStyle.setStyle(
-                              textColor: AvisColors.Grey(500), fontSize: 16),
+                              textColor: AvisColors.Grey(300), fontSize: 16),
                         ),
                         const SizedBox(
                           height: 4,
@@ -114,7 +117,7 @@ class OnBoarding extends StatelessWidget {
                         Text(
                           'و یا اگر دنبال ملک با مشخصات دلخواه خود هستید',
                           style: AvisTextStyle.setStyle(
-                              textColor: AvisColors.Grey(500), fontSize: 16),
+                              textColor: AvisColors.Grey(300), fontSize: 16),
                         ),
                         const SizedBox(
                           height: 4,
@@ -122,7 +125,7 @@ class OnBoarding extends StatelessWidget {
                         Text(
                           'آویز ها را ببینید',
                           style: AvisTextStyle.setStyle(
-                              textColor: AvisColors.Grey(500), fontSize: 16),
+                              textColor: AvisColors.Grey(300), fontSize: 16),
                         ),
                       ],
                     ),

@@ -18,10 +18,23 @@ class NewAdvertising extends StatefulWidget {
 class _NewAdvertisingState extends State<NewAdvertising> {
   PageController pageController = PageController();
   double width = 40;
+  int _currentPage = 0;
+
+
+
+@override
+  void initState() {
+    super.initState();
+    pageController.addListener(() {
+      setState(() {
+        _currentPage = pageController.page!.toInt();
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarAdvertise(),
+      appBar:  AppBarAdvertise(pagenumber: _currentPage,pageController: pageController,),
       backgroundColor: AvisColors.greyBase,
       body: SafeArea(
         child: Stack(
