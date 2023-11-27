@@ -1,10 +1,10 @@
 import 'package:divar/components/new_advertise_page_appBar.dart';
 import 'package:divar/config/colors.dart';
-import 'package:divar/screens/newAdvertise/screen1.dart';
-import 'package:divar/screens/newAdvertise/screen2.dart';
-import 'package:divar/screens/newAdvertise/screen3.dart';
-import 'package:divar/screens/newAdvertise/screen4.dart';
-import 'package:divar/screens/newAdvertise/screen5.dart';
+import 'package:divar/screens/newAdvertise/new_advertise_screen_1.dart';
+import 'package:divar/screens/newAdvertise/new_advertise_screen_2.dart';
+import 'package:divar/screens/newAdvertise/new_advertise_screen_3.dart';
+import 'package:divar/screens/newAdvertise/new_advertise_screen_4.dart';
+import 'package:divar/screens/newAdvertise/new_advertise_screen_5.dart';
 import 'package:divar/widgets/linearPageIndicator.dart';
 import 'package:flutter/material.dart';
 
