@@ -1,6 +1,6 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
-import 'package:divar/screens/add_advertising.dart';
+import 'package:divar/screens/new_advertising.dart';
 import 'package:divar/screens/home_screen.dart';
 import 'package:divar/screens/user_profile_screen.dart';
 import 'package:flutter/material.dart';

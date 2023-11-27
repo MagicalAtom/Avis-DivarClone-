@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:divar/components/bigProduct.dart';
-import 'package:divar/components/littleProduct.dart';
+import 'package:divar/components/horizontal_card_advertise_home.dart';
+import 'package:divar/components/vertical_card_addvertise_home.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:divar/data/product.dart';
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                             },
                             child: FadeInDown(
                               delay: const Duration(milliseconds: 200),
-                              child: BigProduct(
+                              child: VerticalCard(
                                 //
                                 title: productsHomePage[index].title,
                                 description:
@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                             },
                             child: FadeInLeft(
                               delay: const Duration(milliseconds: 200),
-                              child: LittleProduct(
+                              child: HorizontalCard(
                                 title: productsHomePage[index].title,
                                 description:
                                     productsHomePage[index].description,

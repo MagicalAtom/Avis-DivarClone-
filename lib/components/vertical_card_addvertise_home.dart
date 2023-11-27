@@ -2,8 +2,8 @@ import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:flutter/material.dart';
 
-class BigProduct extends StatelessWidget {
-  BigProduct(
+class VerticalCard extends StatelessWidget {
+  VerticalCard(
       {super.key,
       required this.title,
       required this.description,

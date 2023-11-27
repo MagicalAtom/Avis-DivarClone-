@@ -85,7 +85,7 @@ class _Screen5State extends State<Screen5> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'لطفا تصویر آویز خود را بارگذاری کنید',
+                            selectedImage != null ? 'بارگذاری تصویر جدید' : 'لطفا تصویر آویز خود را بارگذاری کنید',
                             style: AvisTextStyle.setStyle(
                                 textColor: selectedImage != null
                                     ? AvisColors.greyBase

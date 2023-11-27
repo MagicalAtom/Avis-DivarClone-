@@ -1,5 +1,3 @@
-import 'package:divar/screens/add_advertising.dart';
-import 'package:divar/screens/addvertise_screen.dart';
 import 'package:divar/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 

@@ -2,8 +2,8 @@ import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:flutter/material.dart';
 
-class LittleProduct extends StatelessWidget {
-  LittleProduct(
+class HorizontalCard extends StatelessWidget {
+  HorizontalCard(
       {super.key,
       required this.title,
       required this.description,
