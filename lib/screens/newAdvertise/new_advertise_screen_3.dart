@@ -1,5 +1,7 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
+import 'package:divar/screens/newAdvertise/Widgets/GenerateRowSectionCategory.dart';
+import 'package:divar/screens/newAdvertise/Widgets/GenerateRowSectionFeature.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/newAdvertise/feature_items.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +9,9 @@ import 'package:flutter/material.dart';
 
 class Screen3 extends StatefulWidget {
   Screen3({super.key, required this.controller});
+
   PageController controller;
+
   @override
   State<Screen3> createState() => _Screen3State();
 }
@@ -21,9 +25,6 @@ class _Screen3State extends State<Screen3> {
     'فروش آپارتمان4',
     'فروش آپارتمان5',
   ];
-
-  // options contrller
-  TextEditingController options = TextEditingController();
 
   // meter controller
   int meterint = 350;
@@ -67,6 +68,7 @@ class _Screen3State extends State<Screen3> {
   }
 
   String dropdownValue = 'فروش آپارتمان';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,14 +98,17 @@ class _Screen3State extends State<Screen3> {
                   ),
                   //********* کل محدوده مشخص شده یک ردیف را تعیین *********/
 
-                  Sections(
-                      firstTitle: 'دسته بندی',
-                      firstController: options,
-                      secondTitle: 'محدوده ملک',
-                      isStaticField: true,
-                      StaticFieldText: 'خیابان صیاد شیرازی',
-                      secondController: options,
-                      isCategory: true),
+                  GenerateRowSectionCategory(
+                      CategoryTitle: 'دسته بندی',
+                      CategoryItems: items,
+                      DropdownValue: dropdownValue,
+                      onSelected: (String? value) {
+                        // This is called when the user selects an item.
+                        setState(() {
+                          dropdownValue = value!;
+                        });
+                      },
+                      secondTitle: 'محدوده ملک'),
 
                   //******************/
                   const SizedBox(
@@ -125,7 +130,7 @@ class _Screen3State extends State<Screen3> {
                   const SizedBox(
                     height: 32,
                   ),
-                  Sections(
+                  GenerateRowSectionFeature(
                       firstTitle: 'متراژ',
                       firstController: meter,
                       secondTitle: 'تعداد اتاق',
@@ -133,7 +138,7 @@ class _Screen3State extends State<Screen3> {
                   const SizedBox(
                     height: 32,
                   ),
-                  Sections(
+                  GenerateRowSectionFeature(
                       firstTitle: 'سال ساخت',
                       firstController: madeit,
                       secondTitle: 'طبقه',
@@ -211,187 +216,5 @@ class _Screen3State extends State<Screen3> {
     );
   }
 
-/*======================================AboutDialog
-catregory فیلد
-در ویجت پایین اگه 
-true
-باشه میاد و دارپ داون باتن رو نمایش میده
-ویجت
-Sections
-پایین یک ردیف از موارد رو جنریت میکنه
-======================================*/
-
-  Widget Sections({
-    required String firstTitle,
-    required TextEditingController firstController,
-    required String secondTitle,
-    required TextEditingController secondController,
-
-    /// برای مشخص کردن دراپ دان باتن
-    bool isCategory = false,
-
-    /// کاربرد برای باکس ها با مقدار ثابت مثل محدوده ملک
-    bool isStaticField = false,
-
-    /// اگر مقدار بالا رو فعال کنید نیاز هست که متن هم برای اون باکس در نظر بگیرین
-    String StaticFieldText = '',
-  }) {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                firstTitle,
-                style: AvisTextStyle.setStyle(
-                    textColor: AvisColors.Grey(200), fontSize: 18),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-
-              // generate Box === if category true , show drop down button
-              isCategory
-                  ? DropDown()
-                  : Container(
-                      padding: const EdgeInsets.all(6),
-                      height: 62,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: AvisColors.Grey(100)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // first item section ++++====================
-                          SizedBox(
-                            width: 80,
-                            child: TextField(
-                              controller: firstController,
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.all(12),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Image.asset(
-                                'assets/images/icons/up.png',
-                                width: 10,
-                                fit: BoxFit.cover,
-                              ))
-                        ],
-                      ),
-                    ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          width: 25,
-        ),
-        //second item ==================
-
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                secondTitle,
-                style: AvisTextStyle.setStyle(
-                    textColor: AvisColors.Grey(200), fontSize: 18),
-              ),
-
-              const SizedBox(
-                height: 16,
-              ),
-
-              // اینجا چون دومین فیلد بود قرار گرفته
-              isStaticField
-                  ? Container(
-                      height: 62,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: AvisColors.Grey(100)),
-                      child: Center(
-                        child: Text(
-                          StaticFieldText, // اینجا هم
-                          style:
-                              AvisTextStyle.h6(textColor: AvisColors.Grey(300)),
-                        ),
-                      ),
-                    )
-                  : Container(
-                      padding: const EdgeInsets.all(6),
-                      height: 62,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: AvisColors.Grey(100)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 80,
-                            child: TextField(
-                              controller: secondController,
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.all(12),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Image.asset(
-                                'assets/images/icons/up.png',
-                                width: 10,
-                                fit: BoxFit.cover,
-                              ))
-                        ],
-                      ),
-                    ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-// drop Down Widget put here ***=============================================
-  DropdownMenu<String> DropDown() {
-    return DropdownMenu<String>(
-      controller: options,
-      textStyle:
-          AvisTextStyle.setStyle(textColor: Colors.black45, fontSize: 17),
-      inputDecorationTheme: InputDecorationTheme(
-        labelStyle:
-            AvisTextStyle.setStyle(textColor: Colors.black45, fontSize: 17),
-        floatingLabelStyle:
-            AvisTextStyle.setStyle(textColor: Colors.black45, fontSize: 17),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(width: .4, color: AvisColors.Grey(200))),
-      ),
-      trailingIcon: const Icon(
-        CupertinoIcons.chevron_down,
-        size: 28,
-        color: Colors.black,
-      ),
-      initialSelection: items.first,
-      onSelected: (String? value) {
-        // This is called when the user selects an item.
-        setState(() {
-          dropdownValue = value!;
-        });
-      },
-      dropdownMenuEntries: items.map<DropdownMenuEntry<String>>((String value) {
-        return DropdownMenuEntry<String>(value: value, label: value);
-      }).toList(),
-    );
-  }
+//========================================================================
 }

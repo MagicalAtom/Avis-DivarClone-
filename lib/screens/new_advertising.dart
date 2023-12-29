@@ -69,27 +69,28 @@ class _NewAdvertisingState extends State<NewAdvertising> {
     switch (index) {
       case 0:
         setState(() {
-          width = 90;
+          width = MediaQuery.of(context).size.width - 411;
+
         });
         break;
       case 1:
         setState(() {
-          width = 190;
+          width = MediaQuery.of(context).size.width - 309;
         });
         break;
       case 2:
         setState(() {
-          width = MediaQuery.of(context).size.width - 110;
+          width = MediaQuery.of(context).size.width - 207;
         });
         break;
       case 3:
         setState(() {
-          width = MediaQuery.of(context).size.width - 50;
+          width = MediaQuery.of(context).size.width - 98;
         });
         break;
       case 4:
         setState(() {
-          width = MediaQuery.of(context).size.width - 0;
+          width = MediaQuery.of(context).size.width;
         });
         break;
     }

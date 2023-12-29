@@ -2,6 +2,7 @@ import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:divar/screens/new_advertising.dart';
 import 'package:divar/screens/home_screen.dart';
+import 'package:divar/screens/search_screen.dart';
 import 'package:divar/screens/user_profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _MainApplicationState extends State<MainApplication> {
 // Routes
   List<Widget> MainPages = [
     const HomeScreen(),
-    const NewAdvertising(),
+    const SearchScreen(),
     const NewAdvertising(),
     const UserProfileScreen()
   ];
@@ -35,6 +36,8 @@ class _MainApplicationState extends State<MainApplication> {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Image.asset('assets/images/bottom-icon/adds-active.png')),
     ),
+
+
     BottomNavigationBarItem(
       label: 'جستجو',
       icon: Container(
@@ -44,6 +47,8 @@ class _MainApplicationState extends State<MainApplication> {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Image.asset('assets/images/bottom-icon/search-active.png')),
     ),
+
+
     BottomNavigationBarItem(
       label: 'افزودن آویز',
       icon: Container(
@@ -53,6 +58,8 @@ class _MainApplicationState extends State<MainApplication> {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Image.asset('assets/images/bottom-icon/add-active.png')),
     ),
+
+
     BottomNavigationBarItem(
       label: 'آویز من',
       icon: Container(
@@ -62,6 +69,8 @@ class _MainApplicationState extends State<MainApplication> {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Image.asset('assets/images/bottom-icon/profile-active.png')),
     ),
+
+
   ];
   @override
   Widget build(BuildContext context) {

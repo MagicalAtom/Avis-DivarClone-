@@ -1,11 +1,10 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:divar/components/horizontal_card_advertise_home.dart';
-import 'package:divar/components/vertical_card_addvertise_home.dart';
 import 'package:divar/config/colors.dart';
-import 'package:divar/config/text-style.dart';
-import 'package:divar/data/product.dart';
-import 'package:divar/screens/addvertise_screen.dart';
+import 'package:divar/screens/homeScreen/HorizontalListGenerate.dart';
+import 'package:divar/screens/homeScreen/Space.dart';
+import 'package:divar/screens/homeScreen/VerticalListGenerator.dart';
 import 'package:flutter/material.dart';
+
+import 'homeScreen/BreakSection.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,114 +34,21 @@ class HomeScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: breakSection(text: 'آویز های داغ'),
               ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: 24),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 290,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: productsHomePage.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          margin: index == 0
-                              ? const EdgeInsets.only()
-                              : const EdgeInsets.only(right: 16),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return AddvertiseScreen(
-                                  title: productsHomePage[index].title,
-                                  image: productsHomePage[index].image,
-                                );
-                              }));
-                            },
-                            child: FadeInDown(
-                              delay: const Duration(milliseconds: 200),
-                              child: VerticalCard(
-                                //
-                                title: productsHomePage[index].title,
-                                description:
-                                    productsHomePage[index].description,
-                                image: productsHomePage[index].image,
-                                price: productsHomePage[index].price,
-                              ),
-                            ),
-                          ));
-                    },
-                  ),
-                ),
-              ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: 32),
-              ),
+              height(24),
+
+              VerticalList(),
+              height(32),
+
               SliverToBoxAdapter(
                 child: breakSection(text: 'آویز های اخیر'),
               ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: 24),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: productsHomePage.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          margin: const EdgeInsets.only(top: 16),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return AddvertiseScreen(
-                                  title: productsHomePage[index].title,
-                                  image: productsHomePage[index].image,
-                                );
-                              }));
-                            },
-                            child: FadeInLeft(
-                              delay: const Duration(milliseconds: 200),
-                              child: HorizontalCard(
-                                title: productsHomePage[index].title,
-                                description:
-                                    productsHomePage[index].description,
-                                image: productsHomePage[index].image,
-                                price: productsHomePage[index].price,
-                              ),
-                            ),
-                          ));
-                    },
-                  ),
-                ),
-              ),
+
+              height(24),
+              HorizontalList(context)
+
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget breakSection({required String text}) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            text,
-            style: AvisTextStyle.h6(textColor: Colors.black),
-          ),
-          Text(
-            'مشاهده همه',
-            style: AvisTextStyle.setStyle(
-                textColor: AvisColors.Grey(200), fontSize: 16),
-          ),
-        ],
       ),
     );
   }
