@@ -1,3 +1,4 @@
+/// bottom tabBar advertise library . Button Tab in advertise Screen
 library easy_animated_tabbar;
 import 'package:easy_animated_tabbar/easy_button_widget.dart';
 import 'package:flutter/material.dart';
