@@ -32,20 +32,16 @@ class HomeScreen extends StatelessWidget {
             slivers: [
               // hot avis ====================================
               SliverToBoxAdapter(
-                child: breakSection(text: 'آویز های داغ'),
+                child: breakSection(text: 'آویز های داغ',context: context),
               ),
               height(24),
-
               VerticalList(),
               height(32),
-
               SliverToBoxAdapter(
-                child: breakSection(text: 'آویز های اخیر'),
+                child: breakSection(text: 'آویز های اخیر',context: context),
               ),
-
               height(24),
               HorizontalList(context)
-
             ],
           ),
         ),

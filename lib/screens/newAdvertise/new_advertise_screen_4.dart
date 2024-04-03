@@ -98,7 +98,7 @@ class _Screen4State extends State<Screen4> {
                 FeatureItem(
                   text: 'موقعیت دقیق نقشه نمایش داده شود ؟',
                   value: value,
-                  onToggle: (p0) {
+                  onToggle: () {
                     setState(() {
                       value = value ? false : true;
                     });

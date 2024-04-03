@@ -159,7 +159,6 @@ class _Screen5State extends State<Screen5> {
                   height: 24,
                 ),
                 AvisTextField(
-                  isOtpUsing: false,
                   textEditingController: titleTextEditingController,
                   focusNode: titleTextFieldFocusNode,
                   hintText: 'عنوان آویز را وارد کنید',
@@ -184,7 +183,6 @@ class _Screen5State extends State<Screen5> {
                   height: 24,
                 ),
                 AvisTextField(
-                  isOtpUsing: false,
                   textEditingController: descriptionTextEditingController,
                   focusNode: descriptionTextFieldFocusNode,
                   hintText: 'توضیحات آویز را وارد کنید...',
@@ -197,7 +195,7 @@ class _Screen5State extends State<Screen5> {
                 FeatureItem(
                   text: 'فعال کردن گفت و گو',
                   value: chat,
-                  onToggle: (p0) {
+                  onToggle: () {
                     setState(() {
                       chat = chat ? false : true;
                     });
@@ -209,7 +207,7 @@ class _Screen5State extends State<Screen5> {
                 FeatureItem(
                   text: 'فعال کردن تماس',
                   value: call,
-                  onToggle: (p0) {
+                  onToggle: () {
                     setState(() {
                       call = call ? false : true;
                     });

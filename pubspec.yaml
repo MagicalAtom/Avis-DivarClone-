@@ -44,6 +44,10 @@ dependencies:
   animate_do: ^3.1.2
   cool_alert: ^2.0.1
   image_picker: ^1.0.4
+  smooth_page_indicator: ^1.1.0
+  flutter_otp_text_field: ^1.1.2+1
+  numberpicker: ^2.1.2
+  search_page: ^2.3.0
 
 dev_dependencies:
   flutter_test:

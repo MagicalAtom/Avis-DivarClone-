@@ -53,7 +53,7 @@ Widget UserProfileBox() {
                       width: 12,
                     ),
                     Container(
-                      width: 55,
+                      width: 65,
                       height: 25,
                       decoration: BoxDecoration(
                           color: AvisColors.Red(400),

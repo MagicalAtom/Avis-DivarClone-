@@ -46,6 +46,14 @@ class _Screen3State extends State<Screen3> {
   bool elevator = false;
   bool parking = false;
   bool Store = false;
+  
+  Map<int, bool> FeaturesitemValue = {
+    0: false,
+    1: false,
+    2: false,
+  };
+
+  List<String> Features = ["آسانسور", "پارکینگ", "انباری"];
 
   @override
   void initState() {
@@ -162,33 +170,17 @@ class _Screen3State extends State<Screen3> {
                   const SizedBox(
                     height: 32,
                   ),
-                  FeatureItem(
-                    text: 'آسانسور',
-                    value: elevator,
-                    onToggle: (value) {
-                      setState(() {
-                        elevator = elevator ? false : true;
-                      });
-                    },
-                  ),
-                  FeatureItem(
-                    text: 'پارکینگ',
-                    value: parking,
-                    onToggle: (value) {
-                      setState(() {
-                        parking = parking ? false : true;
-                      });
-                    },
-                  ),
-                  FeatureItem(
-                    text: 'انباری',
-                    value: Store,
-                    onToggle: (value) {
-                      setState(() {
-                        Store = Store ? false : true;
-                      });
-                    },
-                  ),
+                  ...List.generate(Features.length, (index) {
+                    return FeatureItem(
+                      text: 'انباری',
+                      value: FeaturesitemValue[index]!,
+                      onToggle: () {
+                        setState(() {
+                          FeaturesitemValue[index] = FeaturesitemValue[index]! ? false : true;
+                        });
+                      },
+                    );
+                  }),
                   const SizedBox(
                     height: 20,
                   ),

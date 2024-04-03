@@ -11,12 +11,9 @@ class AvisTextField extends StatelessWidget {
       required this.hintText,
       required this.textEditingController,
       required this.focusNode,
-      required this.isOtpUsing,
       this.autofocus = false,
-      this.otpFocusColor = Colors.white,
       this.longField = false,
       this.isLtrField = false,
-      this.LastTextField = false,
       this.isIntKeyboard = false
       });
 
@@ -24,11 +21,6 @@ class AvisTextField extends StatelessWidget {
   TextEditingController? textEditingController;
   String hintText;
 
-  /// این هم اگه روشن بشه تکست فیلد کوچک میشه .
-  bool isOtpUsing;
-
-  /// اگه قراره مثل تکست فیلد های او تی پی موقع فوکوس رنگش تغییر کنه
-  Color otpFocusColor;
 
   /// اگه میخواین مثل بقش او تی پی فوکوس خودکار داشته باشه
   bool autofocus;
@@ -39,14 +31,6 @@ class AvisTextField extends StatelessWidget {
   /// این هم برای روشن کردن حالت راست به چپ برای تکست فیلد هایی که قراره متن انگلیسی داشته باشن روشن باشه
   bool isLtrField;
 
-  bool LastTextField;
-
-  /// only using otp
-  /*
-  مقدار
-   LastTextField
-   هم برای این قرار داده شده که اگه به دلخواه در آخرین تکست فیلد او تی پی قرار بگیره مستقیم کاربر رو به صفحه هوم انتقال بده
-  */
 
 
 // اگه کیبورد عددی لازمه
@@ -64,32 +48,12 @@ class AvisTextField extends StatelessWidget {
             : TextDirection.rtl,
         child: TextField(
           // ************************ Start TextField
-          keyboardType: isOtpUsing || isIntKeyboard ? TextInputType.number : TextInputType.text,
-          onChanged: isOtpUsing
-              ? (value) {
-                  if (value.isNotEmpty) {
-                    if (LastTextField) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                          return const MainApplication();
-                        }),
-                      );
-                    } else {
-                      FocusScope.of(context).nextFocus();
-                    }
-                  }
-                }
-              : null,
+          keyboardType: TextInputType.text,
           autofocus: autofocus ? true : false,
           controller: textEditingController,
-          style: AvisTextStyle.h6(
-              textColor: focusNode.hasFocus && isOtpUsing
-                  ? Colors.black
-                  : AvisColors.Grey(300)),
           focusNode: focusNode,
           maxLines: longField ? 4 : 1,
-          maxLength: isOtpUsing ? 1 : 100,
+          maxLength: 100,
           textDirection: focusNode.hasFocus && isLtrField
               ? TextDirection.ltr
               : TextDirection.rtl,
@@ -98,9 +62,7 @@ class AvisTextField extends StatelessWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
               filled: true,
-              fillColor: focusNode.hasFocus && isOtpUsing
-                  ? AvisColors.Grey(200)
-                  : AvisColors.Grey(100),
+              fillColor: AvisColors.Grey(100),
               contentPadding: const EdgeInsets.all(18),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide.none,

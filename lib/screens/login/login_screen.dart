@@ -1,8 +1,10 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:divar/screens/login/otp_login_screen.dart';
+import 'package:divar/screens/register/register_screen.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/customTextField.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -73,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 32,
                 ),
                 AvisTextField(
-                  isOtpUsing: false,
                   textEditingController: textEditingController,
                   focusNode: textField,
                   isIntKeyboard: true,
@@ -132,10 +133,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(
                         width: 4,
                       ),
-                      Text(
-                        'ثبت نام',
-                        style: AvisTextStyle.setStyle(
-                            textColor: AvisColors.Red(400), fontSize: 16),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,MaterialPageRoute(builder: (context){
+                            return const RegisterScreen();
+                          }));
+                        },
+                        child: Text(
+                          'ثبت نام',
+                          style: AvisTextStyle.setStyle(
+                              textColor: AvisColors.Red(400), fontSize: 16),
+                        ),
                       ),
                     ],
                   ),

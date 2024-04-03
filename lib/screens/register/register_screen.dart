@@ -1,8 +1,10 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
+import 'package:divar/screens/login/login_screen.dart';
 import 'package:divar/screens/register/otp_register.dart';
 import 'package:divar/widgets/button.dart';
 import 'package:divar/widgets/customTextField.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -80,7 +82,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 32,
                 ),
                 AvisTextField(
-                  isOtpUsing: false,
                   textEditingController: textEditingController,
                   focusNode: textField,
                   hintText: 'نام و نام خانوادگی',
@@ -88,7 +89,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 16,),
                   AvisTextField(
-                  isOtpUsing: false,
                   textEditingController: textEditingController2,
                   focusNode: textField2,
                   hintText: 'شماره موبایل',
@@ -147,10 +147,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(
                         width: 4,
                       ),
-                      Text(
-                        'ورود',
-                        style: AvisTextStyle.setStyle(
-                            textColor: AvisColors.Red(400), fontSize: 16),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,MaterialPageRoute(builder: (context) {
+                            return const LoginScreen();
+                          },));
+                        },
+                        child: Text(
+                          'ورود',
+                          style: AvisTextStyle.setStyle(
+                              textColor: AvisColors.Red(400), fontSize: 16),
+                        ),
                       ),
                     ],
                   ),

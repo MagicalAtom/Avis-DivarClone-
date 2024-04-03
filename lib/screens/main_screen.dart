@@ -23,7 +23,7 @@ class _MainApplicationState extends State<MainApplication> {
     const HomeScreen(),
     const SearchScreen(),
     const NewAdvertising(),
-    const UserProfileScreen()
+     UserProfileScreen()
   ];
 
   List<BottomNavigationBarItem> items = [

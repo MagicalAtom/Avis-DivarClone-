@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 class FeatureItem extends StatelessWidget {
+
   FeatureItem(
       {super.key,
       required this.text,
@@ -11,7 +12,7 @@ class FeatureItem extends StatelessWidget {
       required this.onToggle});
   String text;
   bool value;
-  void Function(bool) onToggle;
+  VoidCallback onToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -22,33 +23,36 @@ class FeatureItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
           border: Border.all(width: .7, color: AvisColors.Grey(200)),),
-      child: Center(
-        child: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                height: double.infinity,
-              ),
-              Text(
-                text,
-                style: AvisTextStyle.h6(textColor: const Color(0xff101828)),
-              ),
-              const Spacer(),
-              Transform.scale(
-                  scale: 1,
-                  child: FlutterSwitch(
-                    value: value,
-                    onToggle: onToggle,
-                    activeColor: AvisColors.Red(400),
-                    inactiveColor: AvisColors.Grey(300),
-                    width: 30,
-                    height: 22,
-                    toggleSize: 10,
-                  )),
-            ],
+      child: InkWell(
+        onTap: onToggle,
+        child: Center(
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  height: double.infinity,
+                ),
+                Text(
+                  text,
+                  style: AvisTextStyle.h6(textColor: const Color(0xff101828)),
+                ),
+                const Spacer(),
+                Transform.scale(
+                    scale: 1,
+                    child: FlutterSwitch(
+                      value: value,
+                      onToggle: (value){ },
+                      activeColor: AvisColors.Red(400),
+                      inactiveColor: AvisColors.Grey(300),
+                      width: 30,
+                      height: 22,
+                      toggleSize: 10,
+                    )),
+              ],
+            ),
           ),
         ),
       ),

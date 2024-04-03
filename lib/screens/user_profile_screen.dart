@@ -7,8 +7,25 @@ import 'package:flutter/material.dart';
 import 'UserProfileScreen/SearchBox.dart';
 
 class UserProfileScreen extends StatelessWidget {
-  const UserProfileScreen({super.key});
-
+   UserProfileScreen({super.key});
+  List<String> settingsItemTitle = [
+    "آگهی های من",
+    "پرداخت های من",
+    "بازدید های اخیر",
+    "ذخیره شده ها",
+    "تنظیمات",
+    "پشتیبانی و قوانین",
+    "درباره آویز"
+  ];
+  List<String> settingsIcon = [
+    "note-2.png",
+    "card.png",
+    "eye.png",
+    "save-2.png",
+    "setting.png",
+    "message-question.png",
+    "info-circle.png"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,33 +60,14 @@ class UserProfileScreen extends StatelessWidget {
                   const SizedBox(
                     height: 32,
                   ),
-                  UserProfileItems(text: 'آگهی های من', icon: 'note-2.png'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  UserProfileItems(text: 'پرداخت های من', icon: 'card.png'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  UserProfileItems(text: 'بازدید های اخیر', icon: 'eye.png'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  UserProfileItems(text: 'ذخیره شده ها', icon: 'save-2.png'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  UserProfileItems(text: 'تنظیمات', icon: 'setting.png'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  UserProfileItems(
-                      text: 'پشتیبانی و قوانین', icon: 'message-question.png'),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  UserProfileItems(
-                      text: 'درباره آویز', icon: 'info-circle.png'),
+                 ...List.generate(settingsItemTitle.length, (index) {
+                  return Column(
+                    children: [
+                    UserProfileItems(text: settingsItemTitle[index], icon: settingsIcon[index]),
+                    SizedBox(height: 16,),
+                    ],
+                  );
+                 }),
                   const SizedBox(
                     height: 32,
                   ),
@@ -110,7 +108,6 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 
-
   Row _PageTitle() {
     return Row(
       children: [
@@ -126,5 +123,4 @@ class UserProfileScreen extends StatelessWidget {
       ],
     );
   }
-
 }

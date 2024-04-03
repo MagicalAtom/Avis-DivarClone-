@@ -1,3 +1,4 @@
+import 'package:divar/helper/size_config.dart';
 import 'package:divar/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,8 @@ class AvisApplication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    SizeConfig().init(context);
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Avis Home',
       home: OnBoarding(),

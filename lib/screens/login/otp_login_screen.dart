@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:divar/components/otp_field.dart';
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:divar/screens/home_screen.dart';
@@ -16,48 +17,18 @@ class OtpLoginScreen extends StatefulWidget {
 }
 
 class _OtpLoginScreenState extends State<OtpLoginScreen> {
-  FocusNode textField1 = FocusNode();
-  FocusNode textField2 = FocusNode();
-  FocusNode textField3 = FocusNode();
-  FocusNode textField4 = FocusNode();
-
-  TextEditingController textEditingController = TextEditingController();
-  TextEditingController textEditingController2 = TextEditingController();
-  TextEditingController textEditingController3 = TextEditingController();
-  TextEditingController textEditingController4 = TextEditingController();
-
   int totalTime = 60;
   Timer? timer;
 
   @override
   void initState() {
     super.initState();
-    textField1.addListener(() {
-      setState(() {});
-    });
-    textField2.addListener(() {
-      setState(() {});
-    });
-    textField3.addListener(() {
-      setState(() {});
-    });
-    textField4.addListener(() {
-      setState(() {});
-    });
     startTimer();
   }
 
   @override
   void dispose() {
     super.dispose();
-    textField1.dispose();
-    textField2.dispose();
-    textField3.dispose();
-    textField4.dispose();
-    textEditingController.dispose();
-    textEditingController2.dispose();
-    textEditingController3.dispose();
-    textEditingController4.dispose();
   }
 
 
@@ -105,47 +76,37 @@ void startTimer() {
                 const SizedBox(
                   height: 32,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: AvisTextField(
-                            hintText: 'اینجا',
-                            isOtpUsing: true,
-                            autofocus: true,
-                            textEditingController: textEditingController,
-                            focusNode: textField1)),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                        child: AvisTextField(
-                            hintText: '',
-                            isOtpUsing: true,
-                            textEditingController: textEditingController2,
-                            focusNode: textField2)),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                        child: AvisTextField(
-                            hintText: '',
-                            isOtpUsing: true,
-                            textEditingController: textEditingController3,
-                            focusNode: textField3)),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    Expanded(
-                        child: AvisTextField(
-                            hintText: '',
-                            isOtpUsing: true,
-                            textEditingController: textEditingController4,
-                            focusNode: textField4,
-                            LastTextField: true,
-                            )),
-                  ],
-                ),
-                const SizedBox(height: 35,),
+                  // textField Otp ========================================================
+            OtpTextField(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            autoFocus: true,
+            fieldWidth: 60,
+            fieldHeight: 60,
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            textStyle: AvisTextStyle.h6(textColor: Colors.grey[700]!),
+            borderRadius: BorderRadius.circular(10),
+            numberOfFields: 4,
+            borderColor: Colors.red,
+            focusedBorderColor:AvisColors.Grey(100),
+            showFieldAsBox: false,
+            fillColor: AvisColors.Grey(100),
+            filled: true,
+            onCodeChanged: (String code) {
+              print(code);  
+            },
+            //runs when every textfield is filled 
+            onSubmit: (String verificationCode) {
+               Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder:(context) {
+                return MainApplication();
+              },),(route)=>false);
+            }, 
+    ),
+
+
+
+
+                  // textField Otp ========================================================
+                SizedBox(height: 35,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -1,6 +1,7 @@
 import 'package:divar/config/colors.dart';
 import 'package:divar/config/text-style.dart';
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 Widget GenerateRowSectionFeature({
   /// first item , right
@@ -49,12 +50,13 @@ Widget GenerateRowSectionFeature({
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Image.asset(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Image.asset(
                         'assets/images/icons/up.png',
                         width: 10,
                         fit: BoxFit.cover,
-                      ))
+                      ),
+                  )
                 ],
               ),
             ),
